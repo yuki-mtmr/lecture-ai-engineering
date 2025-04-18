@@ -15,7 +15,7 @@ def load_model():
 
         # アクセストークンを保存
         hf_token = st.secrets["huggingface"]["token"]
-        
+
         device = "cuda" if torch.cuda.is_available() else "cpu"
         st.info(f"Using device: {device}") # 使用デバイスを表示
         pipe = pipeline(
@@ -44,7 +44,7 @@ def generate_response(pipe, user_question):
         # max_new_tokensを調整可能にする（例）
         outputs = pipe(messages, max_new_tokens=512, do_sample=True, temperature=0.7, top_p=0.9)
 
-        # Gemmaの出力形式に合わせて調整が必要な場合がある
+        # Phi-4の出力形式に合わせて調整が必要な場合がある
         # 最後のassistantのメッセージを取得
         assistant_response = ""
         if outputs and isinstance(outputs, list) and outputs[0].get("generated_text"):
