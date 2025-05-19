@@ -30,7 +30,8 @@ def sample_data():
 
         # 必要なカラムのみ選択
         df = df[
-            ["Pclass", "Sex", "Age", "SibSp", "Parch", "Fare", "Embarked", "Survived"]
+            ["Pclass", "Sex", "Age", "SibSp", "Parch",
+                "Fare", "Embarked", "Survived"]
         ]
 
         os.makedirs(os.path.dirname(DATA_PATH), exist_ok=True)
@@ -87,7 +88,8 @@ def train_model(sample_data, preprocessor):
     model = Pipeline(
         steps=[
             ("preprocessor", preprocessor),
-            ("classifier", RandomForestClassifier(n_estimators=100, random_state=42)),
+            ("classifier", RandomForestClassifier(
+                n_estimators=100, random_state=42)),
         ]
     )
 
@@ -149,14 +151,16 @@ def test_model_reproducibility(sample_data, preprocessor):
     model1 = Pipeline(
         steps=[
             ("preprocessor", preprocessor),
-            ("classifier", RandomForestClassifier(n_estimators=100, random_state=42)),
+            ("classifier", RandomForestClassifier(
+                n_estimators=100, random_state=42)),
         ]
     )
 
     model2 = Pipeline(
         steps=[
             ("preprocessor", preprocessor),
-            ("classifier", RandomForestClassifier(n_estimators=100, random_state=42)),
+            ("classifier", RandomForestClassifier(
+                n_estimators=100, random_state=42)),
         ]
     )
 
