@@ -6,6 +6,7 @@ from ..types.models import PresentationData, AnalysisResult, SuggestionItem
 from ..services.gemini_client import GeminiClient
 from ..services.powerpoint_reader import PowerPointReader
 
+
 class SlideAnalyzer:
     def __init__(self, api_key: str = None):
         self.gemini_client = GeminiClient(api_key)
