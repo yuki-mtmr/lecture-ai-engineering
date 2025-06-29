@@ -1,1 +1,0 @@
-# Lecture Slide Support Copilot
